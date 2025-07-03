@@ -55,4 +55,4 @@ When a player dies:
 
 You can view a short demonstration of the plugin in the following video:
 
-[Demo](https://i.imgur.com/uCJEio2.mp4)
+https://github.com/pokkersito/SmartDeathChest/raw/main/img/demo.mp4
