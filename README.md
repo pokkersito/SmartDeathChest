@@ -55,4 +55,4 @@ When a player dies:
 
 You can view a short demonstration of the plugin in the following video:
 
-https://github.com/user-attachments/assets/27178dca-c10c-43d9-acaa-f36173021bd6
+https://imgur.com/a/ruiztp6
