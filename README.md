@@ -46,8 +46,8 @@ When a player dies:
 ## 👤 Author
 
 - **Pokker77**:
-  - 📧 **Discord**: [NeptuneMCPE](https://discord.gg/neptunemcpe)
-  - 📹 **YouTube**: [@Pokkersito_77](https://youtube.com/@Pokkersito_77)
+  - 📧 **Discord**: [My Group](https://discord.gg/neptunemcpe)
+  - 📹 **YouTube**: [My Channel](https://youtube.com/@Pokkersito_77)
 
 ---
 
@@ -55,4 +55,4 @@ When a player dies:
 
 You can view a short demonstration of the plugin in the following video:
 
-<blockquote class="imgur-embed-pub" lang="en" data-id="a/ruiztp6" data-context="false" ><a href="//imgur.com/a/ruiztp6">demo</a></blockquote><script async src="//s.imgur.com/min/embed.js" charset="utf-8"></script>
+<a href="https://imgur.com/uCJEio2"><img src="https://i.imgur.com/uCJEio2.mp4" title="source: imgur.com" /></a>
