@@ -1,0 +1,7 @@
+#Welcome to DeathChest Settings
+
+
+#time it will take for the chest to explode
+#Just enter the number of seconds. For example, for one minute, enter 60.
+
+time: 60

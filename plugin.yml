@@ -1,0 +1,5 @@
+name: SmartDeathChest
+version: 0.0.1
+api: 5.0.0
+main: DeathChest\Main
+author: Pokker77
