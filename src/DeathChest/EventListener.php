@@ -11,6 +11,7 @@ use pocketmine\player\Player;
 use pocketmine\world\sound\ExplodeSound;
 use pocketmine\world\particle\HugeExplodeParticle;
 use pocketmine\scheduler\ClosureTask;
+use pocketmine\scheduler\CancelTaskException;
 use pocketmine\math\Vector3;
 use DeathChest\Main;
 use pocketmine\world\particle\FloatingTextParticle;
@@ -43,10 +44,8 @@ class EventListener implements Listener {
             $reservedSlots = [47, 48, 50, 51];
             $slot = 0;
 
-            foreach ($player->getInventory()->getContents() as $item) {
-                while (in_array($slot, $reservedSlots)) {
-                    $slot++;
-                }
+            foreach ($player->getInventory()->getContents() as $index => $item) {
+                if (in_array($index, $reservedSlots)) $slot++;
                 if ($slot >= $maxSlots) break;
                 $inventory->setItem($slot++, $item);
             }
@@ -57,7 +56,7 @@ class EventListener implements Listener {
                     $inventory->setItem($reservedSlots[$index], $armor);
                 }
             }
-
+            
             $textPosition = $pos1->add(1, 1, 1);
             $name = $player->getName();
             $config = Main::getInstance()->getPluginConfig();
@@ -67,19 +66,17 @@ class EventListener implements Listener {
 
             Main::getInstance()->getScheduler()->scheduleRepeatingTask(new ClosureTask(function() use (&$timeLeft, $world, $textPosition, &$floatingText, $name) {
                 $timeLeft--;
-                if ($timeLeft <= 0) return;
+                if ($timeLeft <= 0) {
+                    throw new CancelTaskException();
+                }
                 $seconds = str_pad((string)$timeLeft, 2, "0", STR_PAD_LEFT);
                 $floatingText->setText("Loot of §b{$name}\n§e00:{$seconds}");
                 $world->addParticle($textPosition, $floatingText);
-            }), 20);
-
             Main::getInstance()->getScheduler()->scheduleDelayedTask(new ClosureTask(function() use ($world, $pos1, $pos2, $floatingText, $textPosition) {
                 $tile = $world->getTile($pos1);
                 if ($tile instanceof TileChest) {
                     foreach ($tile->getInventory()->getContents() as $item) {
-                        if (!$item->isNull()) {
-                            $world->dropItem($pos1->add(0.5, 1, 0.5), $item);
-                        }
+                        $world->dropItem($pos1->add(0.5, 1, 0.5), $item);
                     }
                 }
                 $world->setBlock($pos1, VanillaBlocks::AIR());
